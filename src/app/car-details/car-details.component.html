@@ -1,0 +1,23 @@
+<div *ngIf="car$ | async as car" class="columns is-centered">
+  <div class="column is-offset-3 is-6">
+    <p><img src="../assets/{{car.media[0].url}}" alt="{{car.media[0].name}}" /></p>
+    <h1 class="is-uppercase has-text-weight-semibold has-text-black">{{car.media[0].name}}</h1>
+    <h2 class="has-text-weight-semibold" *ngIf="car.carDetails">{{ car.carDetails.description }}</h2>
+    <p *ngIf="car.carDetails">Price: {{ car.carDetails.price }}</p>
+    <p *ngIf="car.carDetails">Passengers: {{ car.carDetails.meta.passengers }}</p>
+    <p *ngIf="car.carDetails"> {{ car.carDetails.meta.emissions.template }} : {{ car.carDetails.meta.emissions.value}}</p>
+    <p *ngIf="car.carDetails">Drive train:
+      <span *ngFor="let item of car.carDetails.meta.drivetrain let i = index;">
+        {{item}}
+        <span *ngIf="i !== car.carDetails.meta.drivetrain.length-1">, </span>
+      </span>
+    </p>
+    <p *ngIf="car.carDetails">Body styles:
+      <span *ngFor="let item of car.carDetails.meta.bodystyles let i = index;">
+        {{item}}
+        <span *ngIf="i !== car.carDetails.meta.bodystyles.length-1">, </span>
+      </span>
+    </p>
+    <button (click)="gotoCars(car)" class="button is-dark">Back</button>
+  </div>
+</div>

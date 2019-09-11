@@ -1,0 +1,10 @@
+<ul class="columns is-multiline is-gapless">
+  <li *ngFor="let car of cars" class="column is-3 has-text-centered is-half-tablet is-full-mobile">
+    <img src="../assets/{{car.media[0].url}}" alt="{{car.media[0].name}}" />
+    <h1 class="is-uppercase has-text-weight-semibold has-text-black"><span class="title-border">{{car.media[0].name}}</span></h1>
+    <p *ngIf="car.carDetails">From {{car.carDetails.price}}</p>
+    <p *ngIf="car.carDetails" class="has-padding-sides-20 ">{{car.carDetails.description}}</p>
+    <button (click)="goToCarDetails(car)" class="button is-primary has-margin-bottom-30">View Details</button>
+  </li>
+</ul>
+
